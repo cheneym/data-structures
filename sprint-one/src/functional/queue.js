@@ -19,7 +19,13 @@ var Queue = function() {
       start++;
     }
 
-    return storage[start - 1]; // return whatever was at the start key before we incremented the counter
+    var returnValue = storage[start - 1]; // get returnvalue
+
+    delete storage[start - 1]; // return whatever was at the start key before we incremented the counter
+
+    console.log(storage);
+
+    return returnValue;
   };
 
   someInstance.size = function() {
