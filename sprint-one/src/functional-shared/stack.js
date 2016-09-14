@@ -22,13 +22,14 @@ var stackMethods = { // expect to not extend the constructor
   },
 
   pop: function() {
+    var result;
     if (this.counter > 0) {
       this.counter--;
-      var result = this.storage[this.counter];
+      result = this.storage[this.counter];
       delete this.storage[this.counter];
-      return result;
     }
-    return;
+
+    return result;
   },
   
   size: function() {
