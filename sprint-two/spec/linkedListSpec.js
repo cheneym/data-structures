@@ -52,4 +52,17 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  // should allow duplicate values
+  // should not return error when head is removed if there is no head
+  // should properly assign head and tail when last item is removed
+  it('should reassign head and tail to null when the last element is removed', function() {
+    linkedList.addToTail(1234);
+    linkedList.removeHead();
+    expect(linkedList.tail === null && linkedList.tail === null);
+  });
+
+  it('should return undefined when removing head from empty linked list', function() {
+    expect(linkedList.removeHead()).to.equal(undefined);
+  });
 });
