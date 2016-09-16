@@ -28,6 +28,16 @@ var LimitedArray = function(limit) {
       callback(storage[i], i, storage);
     }
   };
+  limitedArray.print = function(callback) {
+    var printStr = '';
+    for (var i = 0; i < storage.length; i++) {
+      var currentItem = storage[i];
+      if (currentItem !== undefined) {
+        printStr += 'index: ' + i + ', key: ' + currentItem.get(0) + ',  value: ' + currentItem.get(1) + '\n';
+      }
+    }
+    console.log(printStr);
+  };
 
   var checkLimit = function(index) {
     if (typeof index !== 'number') {
@@ -47,7 +57,7 @@ var LimitedArray = function(limit) {
 var getIndexBelowMaxForKey = function(str, max) {
   var hash = 0;
   for (var i = 0; i < str.length; i++) {
-    hash = (hash << 5) + hash + str.charCodeAt(i);
+    hash = (hash << 5) + hash + str.charCodeAt(i); // how do bitwise operations work in JS?
     hash = hash & hash; // Convert to 32bit integer
     hash = Math.abs(hash);
   }
