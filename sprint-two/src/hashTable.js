@@ -54,7 +54,6 @@ HashTable.prototype.insert = function(k, v) {
 
 
   if (this.size > this._limit * 75 / 100) {
-    console.log('size: ' + this.size);
     this._storage = this.rehash(true, this, this._limit);
     this._limit *= 2;
   }
@@ -104,7 +103,6 @@ HashTable.prototype.remove = function(k) {
   }
 
   if (this.size < this._limit * 25 / 100) {
-    console.log('size: ' + this.size);
     this._storage = this.rehash(false, this, this._limit);
     this._limit /= 2;
   }

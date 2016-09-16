@@ -36,17 +36,15 @@ describe('hashTable', function() {
   });
 
   it('should handle hash function collisions', function() {
-    var values = ['val1', 'val2', 'val3', 'val4', 'val5', 'val6', 'val7', 'val8', 'val9'];
-    values.forEach(function(item) {
-      hashTable.insert(item, item);
-      hashTable._storage.print();
-    });
-
-
-
-    values.forEach(function(item) {
-      expect(hashTable.retrieve(item)).to.equal(item);
-    });
+    var v1 = 'val1';
+    var v2 = 'val2';
+    var oldHashFunction = window.getIndexBelowMaxForKey;
+    window.getIndexBelowMaxForKey = function() { return 0; };
+    hashTable.insert(v1, v1);
+    hashTable.insert(v2, v2);
+    expect(hashTable.retrieve(v1)).to.equal(v1);
+    expect(hashTable.retrieve(v2)).to.equal(v2);
+    window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
   // (Advanced! Remove the extra "x" when you want the following tests to run)
