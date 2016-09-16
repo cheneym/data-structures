@@ -32,7 +32,7 @@ describe('graph', function() {
     graph.addNode(1);
     graph.addNode(3);
     graph.addEdge(3, 2);
-    expect(graph.hasEdge(3, 2)).to.equal(true);
+    expect(graph.hasEdge(3, 2)).to.equal(true); 
     expect(graph.hasEdge(3, 1)).to.equal(false);
   });
 
@@ -68,4 +68,7 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  // possible requirement: if you add an edge with nodes that don't exist, either create the nodes or not add the edge
+  // possible requirement for graphs: a method that checks if every edge has nodes that exist
 });

@@ -24,4 +24,24 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  //should only have one copy of a key?...
+  it('should only have only one copy of an item', function() {
+    set.add('Hello');
+    set.add('Hello');
+    expect(Object.keys(set._storage)).to.have.length(1);
+  });
+  
+  it('should have value if you add, remove, and add the same value', function() {
+    set.add('hi');
+    set.remove('hi');
+    set.add('hi');
+    expect(set.contains('hi')).to.equal(true);
+  }); 
+  //should have value if you add, remove, add
+  //should not throw exception when you remove an item that doesn't exist
+  it('should not throw exception when you remove an item that doesn\'t exist', function() {
+    expect(function() { set.remove('123'); }).to.not.throw();
+    set.add('1');
+    expect(function() { set.remove('2'); }).to.not.throw();
+  });
 });
