@@ -110,7 +110,6 @@ HashTable.prototype.remove = function(k) {
 };
 
 HashTable.prototype.rehash = function(makeLarger, oldHashTable, size) {
-  debugger;
   var newSize = size;
   if (makeLarger) {
     newSize *= 2;
