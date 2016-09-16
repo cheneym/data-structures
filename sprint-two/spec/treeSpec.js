@@ -14,6 +14,14 @@ describe('tree', function() {
   it('should add children to the tree', function() {
     tree.addChild(5);
     expect(tree.children[0].value).to.equal(5);
+
+    //Add child when there is already a child
+    tree.addChild(1);
+    expect(tree.children[1].value).to.equal(1);
+    
+    //Add child when there are multiple childs
+    tree.addChild(2);
+    expect(tree.children[2].value).to.equal(2);
   });
 
   it('should return true for a value that the tree contains', function() {
@@ -27,7 +35,10 @@ describe('tree', function() {
   });
 
   it('should be able to add children to a tree\'s child', function() {
+    //Add child when there is no child
     tree.addChild(5);
+
+    //Add child to a child
     tree.children[0].addChild(6);
     expect(tree.children[0].children[0].value).to.equal(6);
   });
@@ -40,5 +51,10 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
   });
+
+  // it should add children when there is no children
+  // add children when there is children
+  // tree with just root has empty children's list
+
 
 });
